@@ -1,7 +1,10 @@
 package mpos;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,6 +49,7 @@ public class PartOfSpeechMaker {
   }
   
   public static void main (String [] args) throws IOException {
+    /*
     for (Map.Entry<Character, String> entry: symbolToType().entrySet()){
       System.out.println(entry.getKey());
       System.out.println(entry.getValue());
@@ -53,6 +57,19 @@ public class PartOfSpeechMaker {
     for (Map.Entry<String, List<Character>> entry :readDictionary().entrySet() ){
       System.out.println(entry.getKey());
       System.out.println(entry.getValue());
+    }*/
+    BufferedWriter bw = new BufferedWriter(new FileWriter( new File("out.txt")));
+    for (Map.Entry<String, List<Character>> entry :readDictionary().entrySet() ){
+      bw.write(entry.getKey());
+      bw.write(1);
+      for (int i = 0; i < entry.getValue().size(); i++) {
+        bw.write(entry.getValue().get(i));
+        if (i != entry.getValue().size() - 1) {
+          bw.write(2);
+        }
+      }
+      bw.write('\n');
     }
+    bw.close();
   }
 }
