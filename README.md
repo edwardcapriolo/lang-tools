@@ -4,7 +4,8 @@
 
     load data local inpath '/home/ecapriolo/out.txt' into table parts_of_speech;
 
-==Usage==
+Usage
+----
 
     hive> select * from parts_of_speech limit 10;
     OK
@@ -16,4 +17,4 @@
     OK
     3-D	["A","N"]
     4-F	["N"]
-   4-H'er	["N"]
+    4-H'er	["N"]
